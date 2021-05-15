@@ -1,12 +1,14 @@
 package in.hideandseek.vaxvision.screens.sessions.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.hideandseek.vaxvision.R;
 import in.hideandseek.vaxvision.common.BaseActivity;
@@ -19,6 +21,8 @@ import in.hideandseek.vaxvision.screens.sessions.presenter.SessionsPresenterImpl
 
 public class SessionsActivity extends BaseActivity implements ISessionsView {
 
+    @BindView(R.id.rv_sessions)
+    RecyclerView mSessionsRecyclerView;
 
     public static final String KEY_DISTRICT_ID = "KEY_DISTRICT_ID";
     public static final String KEY_DATE = "KEY_DATE";
