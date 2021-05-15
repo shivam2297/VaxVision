@@ -8,9 +8,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
         android:elevation="4dp"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_small"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_xxxxxlarge"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_xxxxlarge"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/iv_map"
                 app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_small"
-                android:textSize="@dimen/text_xxlarge"
+                android:textSize="@dimen/text_xlarge"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_center_name"
@@ -72,9 +73,9 @@
                 android:id="@+id/tv_datetime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_smaller"
+                android:layout_marginLeft="@dimen/margin_small"
                 android:layout_marginRight="@dimen/margin_small"
-                android:textSize="@dimen/text_large"
+                android:textSize="@dimen/text_normal"
                 app:layout_constraintLeft_toRightOf="@id/ic_calendar"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/ic_calendar"
@@ -84,7 +85,7 @@
                 android:id="@+id/tv_vacname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_xx_large"
+                android:layout_marginTop="@dimen/margin_30dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_xlarge"
                 app:layout_constraintLeft_toLeftOf="@id/tv_center_name"
@@ -95,10 +96,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textview_grey"
-                android:textSize="@dimen/text_smallest"
+                android:textSize="@dimen/text_medium"
+
                 app:layout_constraintBottom_toTopOf="@id/tv_vacname"
                 app:layout_constraintLeft_toLeftOf="@id/tv_vacname"
-                tools:text="Vaccine" />
+                android:text="Vaccine" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_dose1"
@@ -106,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
                 android:textColor="@color/black"
+                android:textSize="@dimen/text_xlarge"
                 app:layout_constraintLeft_toLeftOf="@id/tv_vacname"
                 app:layout_constraintTop_toBottomOf="@id/tv_vacname"
                 tools:text="25" />
@@ -117,7 +120,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toRightOf="@id/tv_dose1"
                 app:layout_constraintRight_toLeftOf="@id/tv_fee"
-
+                android:textSize="@dimen/text_xlarge"
                 app:layout_constraintTop_toTopOf="@id/tv_dose1"
                 tools:text="25" />
 
@@ -127,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/margin_small"
                 android:textColor="@color/black"
+                android:textSize="@dimen/text_xlarge"
                 app:layout_constraintLeft_toRightOf="@id/tv_dose2"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_dose1"
@@ -136,37 +140,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textview_grey"
-                android:textSize="@dimen/text_smallest"
+                android:textSize="@dimen/text_medium"
                 app:layout_constraintBottom_toTopOf="@id/tv_dose1"
                 app:layout_constraintLeft_toLeftOf="@id/tv_dose1"
-                tools:text="Capacity Dose 1" />
+                android:text="Capacity Dose 1" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textview_grey"
-                android:textSize="@dimen/text_smallest"
+                android:textSize="@dimen/text_medium"
                 app:layout_constraintBottom_toTopOf="@id/tv_dose2"
                 app:layout_constraintLeft_toLeftOf="@id/tv_dose2"
-                tools:text="Capacity Dose 2" />
+                android:text="Capacity Dose 2" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textview_grey"
-                android:textSize="@dimen/text_smallest"
+                android:textSize="@dimen/text_medium"
                 app:layout_constraintBottom_toTopOf="@id/tv_fee"
                 app:layout_constraintLeft_toLeftOf="@id/tv_fee"
-                tools:text="Fee" />
+                android:text="Fee" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_min_age"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_small"
-                android:layout_marginTop="@dimen/margin_xx_large"
+                android:layout_marginTop="@dimen/margin_xxx_large"
                 android:layout_marginRight="@dimen/margin_small"
                 android:textColor="@color/blueish_grey"
+                android:textSize="@dimen/text_normal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_dose1"
@@ -174,7 +179,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:id="@+id/fl_register_cowin"
                 android:background="#0000ff"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -185,6 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textSize="@dimen/text_normal"
                     android:text="@string/register_on_co_win"
                     android:textColor="#fff" />
 
