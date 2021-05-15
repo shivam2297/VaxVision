@@ -8,7 +8,7 @@ import in.hideandseek.vaxvision.common.libapi.statedistrict.model.StateList;
 import in.hideandseek.vaxvision.screens.stateinfo.presenter.IDistrictsResponseReceiver;
 import in.hideandseek.vaxvision.screens.stateinfo.presenter.IStatesResponseReceiver;
 
-public class GetDistrictsReposeProcessor implements ResponseCallback<ResponseModel<DistrictList>> {
+public class GetDistrictsReposeProcessor implements ResponseCallback<DistrictList> {
 
     private IDistrictsResponseReceiver responseReceiver;
 
@@ -16,9 +16,10 @@ public class GetDistrictsReposeProcessor implements ResponseCallback<ResponseMod
         this.responseReceiver = responseReceiver;
     }
 
+
     @Override
-    public void onSuccess(ResponseModel<DistrictList> data) {
-        responseReceiver.onSuccess(data.getData().getDistricts());
+    public void onSuccess(DistrictList data) {
+        responseReceiver.onSuccess(data.getDistricts());
     }
 
     @Override

@@ -6,7 +6,7 @@ import in.hideandseek.vaxvision.common.lib.ResponseModel;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.model.StateList;
 import in.hideandseek.vaxvision.screens.stateinfo.presenter.IStatesResponseReceiver;
 
-public class GetStatesReposeProcessor implements ResponseCallback<ResponseModel<StateList>> {
+public class GetStatesReposeProcessor implements ResponseCallback<StateList> {
 
     private IStatesResponseReceiver responseReceiver;
 
@@ -15,8 +15,8 @@ public class GetStatesReposeProcessor implements ResponseCallback<ResponseModel<
     }
 
     @Override
-    public void onSuccess(ResponseModel<StateList> data) {
-        responseReceiver.onSuccessState(data.getData().getStates());
+    public void onSuccess(StateList data) {
+        responseReceiver.onSuccessState(data.getStates());
     }
 
     @Override

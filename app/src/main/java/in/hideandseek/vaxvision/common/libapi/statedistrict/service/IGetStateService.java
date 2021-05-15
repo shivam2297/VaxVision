@@ -13,5 +13,5 @@ import retrofit2.http.Path;
 public interface IGetStateService {
 
     @GET(ApiConstants.GET_STATES)
-    Call<ResponseModel<StateList>> getStates();
+    Call<StateList> getStates();
 }

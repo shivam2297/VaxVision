@@ -14,9 +14,9 @@ import in.hideandseek.vaxvision.common.libapi.statedistrict.service.IGetStateSer
 import retrofit2.Call;
 
 public class GetDistrictsApiRequest {
-    private Call<ResponseModel<DistrictList>> mGetDistrictsCall;
+    private Call<DistrictList> mGetDistrictsCall;
 
-    public void makeRequest(ResponseCallback<ResponseModel<DistrictList>> responseCallBack, ErrorMessageResolver errorMessageResolver, int stateID) {
+    public void makeRequest(ResponseCallback<DistrictList> responseCallBack, ErrorMessageResolver errorMessageResolver, int stateID) {
         IGetDistrictsService iGetDistrictsService = ServiceManager.getManager().createService(IGetDistrictsService.class);
         mGetDistrictsCall = iGetDistrictsService.getDistricts(stateID);
         mGetDistrictsCall.enqueue(new ResponseWrapper<>(responseCallBack, errorMessageResolver));

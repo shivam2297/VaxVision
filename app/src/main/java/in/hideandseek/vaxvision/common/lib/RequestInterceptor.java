@@ -21,6 +21,8 @@ public class RequestInterceptor implements Interceptor {
         // Add api token for each request
 //        builder.header(ApiConstants.HEADER_KEY_TOKEN, getAPIToken(originalRequest.url().encodedPath().replaceFirst("/", "")));
 
+        // add header for accept-language
+        builder.header(ApiConstants.HEADER_KEY_ACCEPT_LANG, ApiConstants.HEADER_LANG);
 
         return chain.proceed(builder.build());
     }

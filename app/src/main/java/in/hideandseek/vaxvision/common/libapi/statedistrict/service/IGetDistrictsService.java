@@ -11,5 +11,5 @@ import retrofit2.http.Path;
 public interface IGetDistrictsService {
 
     @GET(ApiConstants.GET_DISTRICT)
-    Call<ResponseModel<DistrictList>> getDistricts(@Path("state_id") int stateID);
+    Call<DistrictList> getDistricts(@Path("state_id") int stateID);
 }
