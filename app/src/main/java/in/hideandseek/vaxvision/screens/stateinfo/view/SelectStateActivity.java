@@ -2,6 +2,7 @@ package in.hideandseek.vaxvision.screens.stateinfo.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -112,9 +113,12 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
 
     @OnClick(R.id.btn_submit_state)
     void submitStateInfoTapped() {
-        if (isDataValid())
-            launchActivity(this, SessionsActivity.class);
-        else
+        if (isDataValid()) {
+            Intent intent = new Intent(this, SessionsActivity.class);
+            intent.putExtra(SessionsActivity.KEY_DISTRICT_ID, mSelectedDistrict.getDistrictId());
+            intent.putExtra(SessionsActivity.KEY_DATE, mSelectedDate);
+            launchActivity(intent);
+        } else
             Toast.makeText(this, "Please select state and district", Toast.LENGTH_SHORT).show();
     }
 
@@ -122,7 +126,7 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
         if (mSelectedState == null)
             return false;
         if (mSelectedDistrict == null)
-            return  false;
+            return false;
 
         return true;
     }

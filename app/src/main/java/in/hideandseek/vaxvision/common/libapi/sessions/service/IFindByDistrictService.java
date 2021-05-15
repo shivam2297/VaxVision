@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 public interface IFindByDistrictService {
 
     @GET(ApiConstants.FIND_BY_DISTRICT)
-    Call<CurrentSessionList> getCurrentSessions(@Query("district_id ") int districtId,
+    Call<CurrentSessionList> getCurrentSessions(@Query("district_id") int districtId,
                                                 @Query("date") String date);
 }

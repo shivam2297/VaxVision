@@ -15,7 +15,7 @@ public class SessionsPresenterImpl implements ISessionsPresenter, IFindByDistric
         this.manager = manager;
     }
 
-    public void fetSessionsByDistrict(int districtId, String date) {
+    public void findSessionsByDistrict(int districtId, String date) {
         if (mView != null)
             mView.showProgress();
         manager.findByDistrict(this, districtId, date);
