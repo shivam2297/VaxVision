@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_map"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_margin="@dimen/margin_small"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_map" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_center_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_xxxxxlarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_map"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="District General Hostpital" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_center_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                android:textSize="@dimen/text_xxlarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_center_name"
+                tools:text="45 M G Road" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="@dimen/margin_smaller"
+                android:background="@color/gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_center_address" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_calendar"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="@id/tv_center_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_center_address"
+                app:srcCompat="@drawable/ic_schedule" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_datetime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_smaller"
+                android:layout_marginRight="@dimen/margin_small"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintLeft_toRightOf="@id/ic_calendar"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ic_calendar"
+                tools:text="May 31, 2021 6:00 AM to 6:00 PM" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_vacname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xx_large"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_xlarge"
+                app:layout_constraintLeft_toLeftOf="@id/tv_center_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_datetime"
+                tools:text="COVISHIELD" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textview_grey"
+                android:textSize="@dimen/text_smallest"
+                app:layout_constraintBottom_toTopOf="@id/tv_vacname"
+                app:layout_constraintLeft_toLeftOf="@id/tv_vacname"
+                tools:text="Vaccine" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_dose1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="@id/tv_vacname"
+                app:layout_constraintTop_toBottomOf="@id/tv_vacname"
+                tools:text="25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_dose2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@id/tv_dose1"
+                app:layout_constraintRight_toLeftOf="@id/tv_fee"
+
+                app:layout_constraintTop_toTopOf="@id/tv_dose1"
+                tools:text="25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_small"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@id/tv_dose2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_dose1"
+                tools:text="PAID INR 250" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textview_grey"
+                android:textSize="@dimen/text_smallest"
+                app:layout_constraintBottom_toTopOf="@id/tv_dose1"
+                app:layout_constraintLeft_toLeftOf="@id/tv_dose1"
+                tools:text="Capacity Dose 1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textview_grey"
+                android:textSize="@dimen/text_smallest"
+                app:layout_constraintBottom_toTopOf="@id/tv_dose2"
+                app:layout_constraintLeft_toLeftOf="@id/tv_dose2"
+                tools:text="Capacity Dose 2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textview_grey"
+                android:textSize="@dimen/text_smallest"
+                app:layout_constraintBottom_toTopOf="@id/tv_fee"
+                app:layout_constraintLeft_toLeftOf="@id/tv_fee"
+                tools:text="Fee" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_min_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_xx_large"
+                android:layout_marginRight="@dimen/margin_small"
+                android:textColor="@color/blueish_grey"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_dose1"
+                tools:text="Available For Age 18 and above" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:id="@+id/fl_register_cowin"
+                android:background="#0000ff"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_min_age">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/register_on_co_win"
+                    android:textColor="#fff" />
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
