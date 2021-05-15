@@ -26,4 +26,16 @@
 <!--        <item name="fontFamily">@font/regular</item>-->
         <item name="android:textSize">@dimen/text_large</item>
     </style>
+
+    <style name="MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="backgroundColor">@color/colorAccent</item>
+        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:background">@drawable/btn_background_round</item>
+        <!--        <item name="android:paddingLeft">@dimen/mtrl_btn_padding_left</item>-->
+        <!--        <item name="android:paddingRight">@dimen/mtrl_btn_padding_right</item>-->
+        <!--        <item name="android:paddingTop">@dimen/mtrl_btn_padding_top</item>-->
+        <!--        <item name="android:paddingBottom">@dimen/mtrl_btn_padding_bottom</item>-->
+    </style>
 </resources>

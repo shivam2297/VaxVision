@@ -68,6 +68,16 @@
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submit_state"
+            style="@style/MaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_xxxx_large"
+            android:layout_marginEnd="@dimen/margin_xlarge"
+            android:text="Check Available Sessions" />
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

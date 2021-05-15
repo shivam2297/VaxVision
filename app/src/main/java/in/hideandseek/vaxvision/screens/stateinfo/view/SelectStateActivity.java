@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.datepicker.MaterialStyledDatePickerDialog;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,6 +31,7 @@ import in.hideandseek.vaxvision.common.libapi.statedistrict.model.District;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.model.State;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.request.GetDistrictsApiRequest;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.request.GetStatesApiRequest;
+import in.hideandseek.vaxvision.screens.sessions.view.SessionsActivity;
 import in.hideandseek.vaxvision.screens.stateinfo.manager.StateDistrictServiceManager;
 import in.hideandseek.vaxvision.screens.stateinfo.presenter.ISelectStatePresenter;
 import in.hideandseek.vaxvision.screens.stateinfo.presenter.SelectStatePresenterImpl;
@@ -49,6 +55,7 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
     private MaterialSpinnerAdapter mDistrictDDAdapter;
     private State mSelectedState;
     private District mSelectedDistrict;
+    private String mSelectedDate;
 
     private ISelectStatePresenter mPresenter;
 
@@ -68,6 +75,12 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
         mddState.setAdapter(mStateDDAdapter);
         mddDistrict.setAdapter(mDistrictDDAdapter);
 
+        // initialize with current date
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+        mDateEditText.setText(dateFormat.format(date));
+        DateFormat dateFormatSelected = new SimpleDateFormat("dd-MM-yyyy");
+        mSelectedDate = dateFormatSelected.format(date);
 
 
         mddDistrict.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -97,6 +110,23 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
         super.onDestroy();
     }
 
+    @OnClick(R.id.btn_submit_state)
+    void submitStateInfoTapped() {
+        if (isDataValid())
+            launchActivity(this, SessionsActivity.class);
+        else
+            Toast.makeText(this, "Please select state and district", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isDataValid() {
+        if (mSelectedState == null)
+            return false;
+        if (mSelectedDistrict == null)
+            return  false;
+
+        return true;
+    }
+
     @OnClick(R.id.et_date)
     void dateETTapped() {
         MaterialDatePicker picker = MaterialDatePicker.Builder.datePicker()
@@ -116,6 +146,15 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
 
     private void updateDateLabel(String date) {
         mDateEditText.setText(date);
+        DateFormat dateFormatSelected = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+        try {
+            Date dateObj = dateFormat.parse(date);
+            mSelectedDate = dateFormatSelected.format(dateObj);
+            int a = 1;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
