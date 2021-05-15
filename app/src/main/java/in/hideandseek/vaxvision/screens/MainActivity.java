@@ -1,8 +1,10 @@
-package in.hideandseek.vaxvision;
+package in.hideandseek.vaxvision.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import in.hideandseek.vaxvision.R;
 
 public class MainActivity extends AppCompatActivity {
 
