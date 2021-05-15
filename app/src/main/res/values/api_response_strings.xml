@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="some_error_occured">Some Error Occurred. Please try again.</string>
+    <string name="INVALID_TOKEN">Invalid auth token</string>
+    <string name="INVALID_ARGS">Invalid arguments supplied</string>
+    <string name="DB_ERROR">Some DB Error occurred</string>
+    <string name="COLUMN_NOT_FOUND">Column not found</string>
+    <string name="TABLE_NOT_FOUND">Table not found</string>
+    <string name="DUPLICATE_COLUMN_DATA">Column Record already exists</string>
+    <string name="DATA_INSERT_FAILED">Data Insertion Failed</string>
+    <string name="DATA_UPDATE_FAILED">Data Updation Failed</string>
+    <string name="DATA_DELETE_FAILED">Data Deletion Failed</string>
+    <string name="DUPLICATE_BNAME">Business name already exists. Please enter new business name.</string>
+    <string name="DUPLICATE_BEMAIL">Business email already exists. Please enter new business email.</string>
+    <string name="DUPLICATE_REGISTRATIONREF">Duplicate Registration Reference.</string>
+    <string name="SERVER_ERROR">Server error occurred. Please try again.</string>
+    <string name="INVALID_CREDENTIALS">Invalid login credentials.</string>
+    <string name="DUPLICATE_USER">User already exists</string>
+    <string name="USER_EXISTS">A super user already exists for current business</string>
+    <string name="BUSINESS_NOT_FOUND">Business not found</string>
+    <string name="PLAN_NOT_FOUND">Plan not found</string>
+    <string name="ACCOUNTTYPES_NOT_FOUND">Account types not found</string>
+    <string name="USER_NOT_FOUND">User not found.</string>
+    <string name="add_account_success_msg">Account Added successfully</string>
+</resources>
