@@ -15,6 +15,7 @@ public class ApiConstants {
     // API Endpoints
     public static final String GET_STATES = "v2/admin/location/states";
     public static final String GET_DISTRICT = "v2/admin/location/districts/{state_id}";
+    public static final String FIND_BY_DISTRICT = "v2/appointment/sessions/public/findByDistrict";
 
 
 }
