@@ -47,6 +47,8 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
     private ArrayList<String> mDistrictNames = new ArrayList<String>();
     private MaterialSpinnerAdapter mStateDDAdapter;
     private MaterialSpinnerAdapter mDistrictDDAdapter;
+    private State mSelectedState;
+    private District mSelectedDistrict;
 
     private ISelectStatePresenter mPresenter;
 
@@ -71,14 +73,18 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
         mddDistrict.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                if (mDistricts.size() > 0 && i >= 0)
+                    mSelectedDistrict = mDistricts.get(i);
             }
         });
 
         mddState.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                if (mStates.size() > 0 && i >= 0) {
+                    mSelectedState = mStates.get(i);
+                    mPresenter.getDistricts(mSelectedState.getStateId());
+                }
             }
         });
 
