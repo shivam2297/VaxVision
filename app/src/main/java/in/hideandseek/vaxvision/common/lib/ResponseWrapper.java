@@ -20,10 +20,17 @@ public class ResponseWrapper<T> implements Callback<T> {
             if (response != null) {
                 try {
                     ResponseModel responseModel = (ResponseModel) response.body();
-                    if (responseModel.getCode().equals(ErrorCode.STATUS_OK.getErrorCodeValue()) || responseModel.getCode().equals(ErrorCode.DEFAULT.getErrorCodeValue()))
-                        mResponseCallback.onSuccess(response.body());
-                    else
-                        mResponseCallback.onFailure(new ErrorResponse(mErrorMessageResolver.resolve(responseModel.getCode())));
+
+                    try {
+                        ErrorModel errorModel = (ErrorModel) responseModel.getData();
+                        if (errorModel != null)
+                            mResponseCallback.onFailure(new ErrorResponse(mErrorMessageResolver.resolve(errorModel.getErrorCode())));
+                        else
+                            mResponseCallback.onSuccess((T) responseModel.getData());
+                    } catch (Exception e) {
+                        mResponseCallback.onSuccess((T) responseModel.getData());
+                    }
+
                 } catch (Exception e) {
                     ErrorResponse error = new ErrorResponse(R.string.some_error_occured);
                     error.setErrorExp(e);
