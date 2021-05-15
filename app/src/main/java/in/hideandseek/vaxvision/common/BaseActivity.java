@@ -41,7 +41,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
     @Override
     protected void onStart() {
         super.onStart();
-        GlobalBus.getsBus().register(this);
+//        GlobalBus.getsBus().register(this);
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         registerReceiver(mInternetReceiver, filter);
@@ -50,7 +50,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
     @Override
     protected void onStop() {
         super.onStop();
-        GlobalBus.getsBus().unregister(this);
+//        GlobalBus.getsBus().unregister(this);
         unregisterReceiver(mInternetReceiver);
     }
 
