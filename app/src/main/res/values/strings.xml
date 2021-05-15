@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VaxVision</string>
+    <string name="check_vaccine_appointment_availability">Check Vaccine Appointment Availability</string>
 </resources>
