@@ -10,15 +10,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin_xlarge"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_states"
+            style="@style/TextInputLayout.ExposedDropDown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextInputLayout.ExposedDropDown"
             android:hint="Select State"
             android:theme="@style/TextInputLayout">
 
@@ -30,14 +32,38 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_districts"
+            style="@style/TextInputLayout.ExposedDropDown"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            android:hint="Select District"
+            android:theme="@style/TextInputLayout">
 
             <AutoCompleteTextView
                 android:id="@+id/dd_district"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_date"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            android:hint="Select Date"
+            android:theme="@style/TextInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_date"
+                android:layout_width="match_parent"
+                android:focusable="false"
+                android:layout_height="match_parent"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:cursorVisible="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
