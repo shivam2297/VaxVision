@@ -2,4 +2,6 @@
     <string name="app_name">VaxVision</string>
     <string name="check_vaccine_appointment_availability">Check Vaccine Appointment Availability</string>
     <string name="register_on_co_win">Register on Co-WIN</string>
+    <string name="generate_otp">Generate OTP</string>
+    <string name="submit_otp">Submit OTP</string>
 </resources>
