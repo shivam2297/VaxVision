@@ -16,6 +16,8 @@ public class ApiConstants {
     public static final String GET_STATES = "v2/admin/location/states";
     public static final String GET_DISTRICT = "v2/admin/location/districts/{state_id}";
     public static final String FIND_BY_DISTRICT = "v2/appointment/sessions/public/findByDistrict";
+    public static final String GENERATE_OTP = "v2/auth/public/generateOTP";
+    public static final String CONFIRM_OTP = "v2/auth/public/confirmOTP";
 
 
 }
