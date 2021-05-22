@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.otp.view.OtpActivity"></activity>
+        <activity android:name=".screens.downloadcert.view.CertificateActivity"></activity>
+        <activity android:name=".screens.otp.view.OtpActivity" />
         <activity android:name=".screens.sessions.view.SessionsActivity" />
         <activity android:name=".screens.stateinfo.view.SelectStateActivity" />
         <activity android:name=".screens.home.view.HomeActivity">

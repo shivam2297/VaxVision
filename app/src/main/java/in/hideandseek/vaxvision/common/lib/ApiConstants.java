@@ -7,6 +7,7 @@ public class ApiConstants {
 
 
     public static final String URL_API = BuildConfig.API_URL;
+    public static final String MOBILE_USER_AGENT = BuildConfig.MOBILE_USER_AGENT;
 
 
     public static final String HEADER_KEY_ACCEPT_LANG = "Accept-Language";

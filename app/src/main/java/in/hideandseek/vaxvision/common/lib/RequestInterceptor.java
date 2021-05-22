@@ -23,9 +23,13 @@ public class RequestInterceptor implements Interceptor {
 
         // add header for accept-language
         builder.header(ApiConstants.HEADER_KEY_ACCEPT_LANG, ApiConstants.HEADER_LANG);
-        builder.removeHeader("User-Agent");
-        builder.header("User-Agent",
-                "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)");
+
+        // modify user agent header
+        if ("YES".equals(ApiConstants.MOBILE_USER_AGENT)) {
+            builder.removeHeader("User-Agent");
+            builder.header("User-Agent",
+                    "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)");
+        }
 
         return chain.proceed(builder.build());
     }
@@ -41,6 +45,6 @@ public class RequestInterceptor implements Interceptor {
         } catch (Exception e) {
             throw new RuntimeException("Failed to calculate hmac-sha256", e);
         }
-        return String.format("%0" + (hmacSha256.length*2) + "X", new BigInteger(1, hmacSha256)).toLowerCase();
+        return String.format("%0" + (hmacSha256.length * 2) + "X", new BigInteger(1, hmacSha256)).toLowerCase();
     }
 }

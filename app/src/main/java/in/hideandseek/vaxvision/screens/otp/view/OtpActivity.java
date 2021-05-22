@@ -3,6 +3,7 @@ package in.hideandseek.vaxvision.screens.otp.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import in.hideandseek.vaxvision.common.BaseActivity;
 import in.hideandseek.vaxvision.common.lib.ErrorResponse;
 import in.hideandseek.vaxvision.common.libapi.otp.request.ConfirmOtpApiRequest;
 import in.hideandseek.vaxvision.common.libapi.otp.request.GenerateOtpApiRequest;
+import in.hideandseek.vaxvision.screens.downloadcert.view.CertificateActivity;
 import in.hideandseek.vaxvision.screens.otp.manager.OtpServiceManager;
 import in.hideandseek.vaxvision.screens.otp.presenter.IOtpPresenter;
 import in.hideandseek.vaxvision.screens.otp.presenter.OtpPresenterImpl;
@@ -98,7 +100,8 @@ public class OtpActivity extends BaseActivity implements IOtpView {
 
     @Override
     public void onOtpConfirmed(String token) {
-
+        Intent intent = new Intent(this, CertificateActivity.class);
+        launchActivity(intent);
     }
 
     @Override

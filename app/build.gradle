@@ -28,11 +28,12 @@ android {
     productFlavors {
         prod {
             buildConfigField 'String', 'API_URL', config_props.prod_api_url
+            buildConfigField 'String', 'MOBILE_USER_AGENT', "\"YES\""
         }
 
         development {
             buildConfigField 'String', 'API_URL', config_props.development_api_url
-
+            buildConfigField 'String', 'MOBILE_USER_AGENT', "\"NO\""
         }
     }
 
