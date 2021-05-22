@@ -8,13 +8,23 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_xlarge"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:textSize="@dimen/text_xxxlarge"
+            android:text="Select state, district and appointment date to search"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_states"

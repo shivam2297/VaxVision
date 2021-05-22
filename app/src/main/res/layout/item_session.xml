@@ -181,7 +181,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:id="@+id/fl_register_cowin"
-                android:background="#0000ff"
+                android:background="@color/btn_blue"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_min_age">
