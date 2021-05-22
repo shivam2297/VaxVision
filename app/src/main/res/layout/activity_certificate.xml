@@ -6,4 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".screens.downloadcert.view.CertificateActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_prompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xlarge"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_xxxlarge"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/please_enter_your_reference_id_for_downloading_the_certificate"
+             />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_ref_id"
+            style="@style/TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xlarge"
+            android:hint="Reference Id (e.g. 1234567890)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_prompt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_refid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_normal"
+            android:text="Download Certificate"
+            android:layout_margin="@dimen/margin_xlarge"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:theme="@style/MaterialButton"
+            android:id="@+id/btn_download_cert"
+            app:layout_constraintTop_toBottomOf="@id/til_ref_id" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

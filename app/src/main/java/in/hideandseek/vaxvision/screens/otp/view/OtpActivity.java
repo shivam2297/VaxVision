@@ -101,6 +101,8 @@ public class OtpActivity extends BaseActivity implements IOtpView {
     @Override
     public void onOtpConfirmed(String token) {
         Intent intent = new Intent(this, CertificateActivity.class);
+        intent.putExtra(CertificateActivity.KEY_TOKEN, token);
+        intent.putExtra(CertificateActivity.KEY_TXN_ID, txnId);
         launchActivity(intent);
     }
 

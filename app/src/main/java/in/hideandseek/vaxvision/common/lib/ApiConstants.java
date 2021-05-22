@@ -19,6 +19,7 @@ public class ApiConstants {
     public static final String FIND_BY_DISTRICT = "v2/appointment/sessions/public/findByDistrict";
     public static final String GENERATE_OTP = "v2/auth/public/generateOTP";
     public static final String CONFIRM_OTP = "v2/auth/public/confirmOTP";
+    public static final String DOWNLOAD_CERTIFICATE = "v2/registration/certificate/public/downloadP";
 
 
 }

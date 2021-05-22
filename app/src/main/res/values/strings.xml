@@ -4,4 +4,8 @@
     <string name="register_on_co_win">Register on Co-WIN</string>
     <string name="generate_otp">Generate OTP</string>
     <string name="submit_otp">Submit OTP</string>
+    <string name="please_enter_your_reference_id_for_downloading_the_certificate">Please enter your reference id for downloading the certificate</string>
+    <string name="invalid_ref_id">Invalid reference id. Please enter a valid reference id</string>
+    <string name="cert_downloaded">Certificate Downloaded and saved on your phone.</string>
+    <string name="privacy_ref_id">We respect your privacy and safety. We do not save or share any sensitive information of user.</string>
 </resources>
