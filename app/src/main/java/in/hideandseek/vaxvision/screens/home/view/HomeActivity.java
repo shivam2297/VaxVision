@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import in.hideandseek.vaxvision.R;
 import in.hideandseek.vaxvision.common.BaseActivity;
+import in.hideandseek.vaxvision.screens.otp.view.OtpActivity;
 import in.hideandseek.vaxvision.screens.stateinfo.view.SelectStateActivity;
 
 public class HomeActivity extends BaseActivity {
@@ -29,6 +30,11 @@ public class HomeActivity extends BaseActivity {
     @OnClick(R.id.btn_check_avail)
     void checkAvailabilityBtnTapped() {
         launchActivity(new Intent(this, SelectStateActivity.class));
+    }
+
+    @OnClick(R.id.btn_user_val)
+    void userAuthBtnTapped() {
+        launchActivity(new Intent(this, OtpActivity.class));
     }
 
 }

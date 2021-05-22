@@ -8,4 +8,5 @@
     <string name="invalid_ref_id">Invalid reference id. Please enter a valid reference id</string>
     <string name="cert_downloaded">Certificate Downloaded and saved on your phone.</string>
     <string name="privacy_ref_id">We respect your privacy and safety. We do not save or share any sensitive information of user.</string>
+    <string name="download_vaccine_certificate">Download Vaccine Certificate</string>
 </resources>

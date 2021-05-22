@@ -10,20 +10,42 @@
         android:id="@+id/btn_check_avail"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_xxxx_large"
+        android:layout_marginRight="@dimen/margin_xlarge"
+        android:background="#0000ff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/margin_xxxx_large"
-        android:layout_marginLeft="@dimen/margin_xlarge"
-        android:layout_marginRight="@dimen/margin_xlarge"
-        android:background="#0000ff">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
+            android:layout_gravity="center"
             android:text="@string/check_vaccine_appointment_availability"
-            android:layout_gravity="center"/>
+            android:textColor="#fff" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/btn_user_val"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_xxxx_large"
+        android:layout_marginRight="@dimen/margin_xlarge"
+        android:background="#0000ff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_check_avail">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/download_vaccine_certificate"
+            android:textColor="#fff" />
 
 
     </FrameLayout>
