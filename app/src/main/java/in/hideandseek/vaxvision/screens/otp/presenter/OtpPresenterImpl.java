@@ -1,7 +1,9 @@
 package in.hideandseek.vaxvision.screens.otp.presenter;
 
 import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -73,10 +75,8 @@ public class OtpPresenterImpl implements IOtpPresenter, IGenerateOtpResReceiver,
         String messageToEncode = otp;
         byte[] hmacSha256 = null;
         try {
-            Mac mac = Mac.getInstance("HmacSHA256");
-            SecretKeySpec secretKeySpec = new SecretKeySpec("ApiConstants.API_SECRET_KEY".getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-            mac.init(secretKeySpec);
-            hmacSha256 = mac.doFinal(messageToEncode.getBytes(StandardCharsets.UTF_8));
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            hmacSha256 = digest.digest(otp.getBytes(StandardCharsets.UTF_8));
         } catch (Exception e) {
             throw new RuntimeException("Failed to calculate hmac-sha256", e);
         }
