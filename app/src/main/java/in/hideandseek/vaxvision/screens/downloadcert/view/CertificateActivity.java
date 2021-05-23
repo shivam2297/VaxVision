@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -202,10 +203,12 @@ public class CertificateActivity extends BaseActivity implements ICertificateVie
 
     private void openFile(boolean writtenToDisk) {
         if (writtenToDisk) {
+            Toast.makeText(this, "Your certificate '" + fileName + "' successfully downloaded and saved on your device", Toast.LENGTH_LONG).show();
             //File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
             java.io.File file = new java.io.File(Environment
                     .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                     + "/" + fileName);
+            Log.w("FILE_DOWNLOADED", (file == null) ? "file null" : "file found at" + fileName);
             try {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.fromFile(file), "application/pdf");
