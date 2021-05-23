@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.Activity;
@@ -205,14 +206,27 @@ public class CertificateActivity extends BaseActivity implements ICertificateVie
         if (writtenToDisk) {
             Toast.makeText(this, "Your certificate '" + fileName + "' successfully downloaded and saved on your device", Toast.LENGTH_LONG).show();
             //File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+            String filePath = Environment
+                    .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    + "/" + fileName;
             java.io.File file = new java.io.File(Environment
                     .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                     + "/" + fileName);
-            Log.w("FILE_DOWNLOADED", (file == null) ? "file null" : "file found at" + fileName);
+//            Log.w("FILE_DOWNLOADED", (file == null) ? "file null" : "file found at" + fileName);
+//            Log.d("FILE_DOWNLOADED", (file == null) ? "file null" : "file found at" + fileName);
+//            Log.wtf("FILE_DOWNLOADED", (file == null) ? "file null" : "file found at" + fileName);
             try {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+//                intent.setDataAndType(Uri.fromFile(file), "application/pdf");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Uri apkURI = FileProvider.getUriForFile(getApplicationContext(), getPackageName() + ".provider", file);
+                    intent.setDataAndType(apkURI, "application/pdf");
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                } else {
+                    intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+                }
                 startActivity(intent);
             } catch (ActivityNotFoundException e) {
                 Snackbar.make(mRootLayout, "No PDF reader found to open this file.", Snackbar.LENGTH_LONG).show();
