@@ -35,5 +35,6 @@ public class SplashActivity extends BaseActivity implements ISplashView {
     @Override
     public void onSplashTimeOut() {
         launchActivity(this, HomeActivity.class);
+        finish();
     }
 }

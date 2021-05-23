@@ -7,7 +7,7 @@ import in.hideandseek.vaxvision.screens.splash.view.ISplashView;
 
 public class SplashPresenterImpl implements IBasePresenter<ISplashView> {
     private ISplashView mView;
-    private static int SPLASH_TIMEOUT = 2000;
+    private static int SPLASH_TIMEOUT = 3000;
 
     public void startTimer() {
 //        mView.showProgress();
