@@ -5,6 +5,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,7 +25,7 @@ import in.hideandseek.vaxvision.screens.sessions.manager.SessionsServiceManager;
 import in.hideandseek.vaxvision.screens.sessions.presenter.ISessionsPresenter;
 import in.hideandseek.vaxvision.screens.sessions.presenter.SessionsPresenterImpl;
 
-public class SessionsActivity extends BaseActivity implements ISessionsView {
+public class SessionsActivity extends BaseActivity implements ISessionsView, SessionsAdapter.OnSessionItemClickListener {
 
     @BindView(R.id.rv_sessions)
     RecyclerView mSessionsRecyclerView;
@@ -47,7 +49,7 @@ public class SessionsActivity extends BaseActivity implements ISessionsView {
         mPresenter = new SessionsPresenterImpl(new SessionsServiceManager(new FindByDistrictApiRequest()));
         mPresenter.onViewBeingCreated(this);
 
-        mSessionAdapter = new SessionsAdapter(mSessions);
+        mSessionAdapter = new SessionsAdapter(mSessions, this);
         mSessionsRecyclerView.setAdapter(mSessionAdapter);
         mSessionsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -71,7 +73,7 @@ public class SessionsActivity extends BaseActivity implements ISessionsView {
         if (mSessions.size() == 0) {
             mNoItemTv.setVisibility(View.VISIBLE);
             mSessionsRecyclerView.setVisibility(View.INVISIBLE);
-        } else  {
+        } else {
             mNoItemTv.setVisibility(View.INVISIBLE);
             mSessionsRecyclerView.setVisibility(View.VISIBLE);
         }
@@ -83,9 +85,42 @@ public class SessionsActivity extends BaseActivity implements ISessionsView {
         if (mSessions.size() == 0) {
             mNoItemTv.setVisibility(View.VISIBLE);
             mSessionsRecyclerView.setVisibility(View.INVISIBLE);
-        } else  {
+        } else {
             mNoItemTv.setVisibility(View.INVISIBLE);
             mSessionsRecyclerView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void locateOnMap(int position) {
+        String locationAndAddress = mSessions.get(position)
+                .getName()
+                + ", "
+                + mSessions.get(position)
+                .getAddress();
+        String latLongQuery = "geo:"
+                + mSessions.get(position).getLat().toString()
+                + ","
+                + mSessions.get(position).getLong().toString()
+                + "?z=10&"
+                + "q="
+                + Uri.encode(locationAndAddress);
+        Uri gmmIntentUri = Uri.parse(latLongQuery);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+//        if (mapIntent.resolveActivity(getPackageManager()) != null)
+//            startActivity(mapIntent);
+//        else
+//            showSnackBar(R.string.install_maps_msg);
+
+    }
+
+    @Override
+    public void registerOnCowin(int position) {
+        String url = "https://www.cowin.gov.in/";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }

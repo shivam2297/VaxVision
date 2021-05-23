@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,7 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
     private SimpleDateFormat dateTargetFormat;
     private SimpleDateFormat timeSrcFormat;
     private SimpleDateFormat timeTargetFormat;
+    private OnSessionItemClickListener mItemClickListener;
 
     private enum FeeType {
         FREE("Free"),
@@ -43,8 +45,9 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
 
     }
 
-    public SessionsAdapter(ArrayList<Session> sessions) {
+    public SessionsAdapter(ArrayList<Session> sessions, OnSessionItemClickListener listener) {
         this.sessions = sessions;
+        this.mItemClickListener = listener;
 
         dateSrcFormat = new SimpleDateFormat("dd-MM-yyyy");
         dateTargetFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -94,6 +97,20 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
             holder.mFee.setText(FeeType.PAID.getValue() + " " + fee);
 
         holder.mAge.setText("Available for age " + session.getMinAgeLimit().toString() + " and above");
+
+        holder.mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mItemClickListener.locateOnMap(position);
+            }
+        });
+
+        holder.mRegisterCowinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mItemClickListener.registerOnCowin(position);
+            }
+        });
     }
 
     @Override
@@ -130,10 +147,19 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
         @BindView(R.id.fl_register_cowin)
         FrameLayout mRegisterCowinBtn;
 
+        @BindView(R.id.iv_map)
+        AppCompatImageView mMapButton;
+
         public SessionsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface OnSessionItemClickListener {
+        void locateOnMap(int position);
+
+        void registerOnCowin(int position);
     }
 }
