@@ -13,18 +13,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.splash.view.SplashActivity">
+        <activity
+            android:name=".screens.splash.view.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.downloadcert.view.CertificateActivity" />
-        <activity android:name=".screens.otp.view.OtpActivity" />
-        <activity android:name=".screens.sessions.view.SessionsActivity" />
-        <activity android:name=".screens.stateinfo.view.SelectStateActivity" />
-        <activity android:name=".screens.home.view.HomeActivity" />
+        <activity
+            android:name=".screens.downloadcert.view.CertificateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.otp.view.OtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.sessions.view.SessionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.stateinfo.view.SelectStateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.home.view.HomeActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
