@@ -3,6 +3,7 @@ package in.hideandseek.vaxvision.screens.splash.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import in.hideandseek.vaxvision.R;
 import in.hideandseek.vaxvision.common.BaseActivity;
@@ -17,6 +18,8 @@ public class SplashActivity extends BaseActivity implements ISplashView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mPresenter = new SplashPresenterImpl();
         mPresenter.onViewBeingCreated(this);

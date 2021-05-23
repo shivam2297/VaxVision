@@ -40,6 +40,7 @@ import in.hideandseek.vaxvision.common.libapi.certificate.request.DownloadCertif
 import in.hideandseek.vaxvision.screens.downloadcert.manager.CertificateServiceManager;
 import in.hideandseek.vaxvision.screens.downloadcert.presenter.CertPresenterImpl;
 import in.hideandseek.vaxvision.screens.downloadcert.presenter.ICertPresenter;
+import okhttp3.ResponseBody;
 
 public class CertificateActivity extends BaseActivity implements ICertificateView {
 
@@ -90,7 +91,7 @@ public class CertificateActivity extends BaseActivity implements ICertificateVie
     }
 
     @Override
-    public void onCertDownloadSuccess(String data) {
+    public void onCertDownloadSuccess(ResponseBody data) {
         mPromptTV.setText(R.string.cert_downloaded);
         openFile(writeFileToDisk(data));
     }
@@ -157,7 +158,7 @@ public class CertificateActivity extends BaseActivity implements ICertificateVie
         }
     }
 
-    private boolean writeFileToDisk(String body) {
+    private boolean writeFileToDisk(ResponseBody body) {
         try {
             // todo change the file location/name according to your needs
             Date date = new Date();
@@ -170,9 +171,9 @@ public class CertificateActivity extends BaseActivity implements ICertificateVie
             OutputStream outputStream = null;
             try {
                 byte[] fileReader = new byte[4096];
-                long fileSize = body.length();
+                long fileSize = body.contentLength();
                 long fileSizeDownloaded = 0;
-                inputStream = new ByteArrayInputStream(body.getBytes(StandardCharsets.UTF_8));
+                inputStream = body.byteStream();
                 outputStream = new FileOutputStream(certPdfFile);
                 while (true) {
                     int read = inputStream.read(fileReader);

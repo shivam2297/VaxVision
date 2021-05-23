@@ -3,6 +3,7 @@ package in.hideandseek.vaxvision.screens.downloadcert.presenter;
 import in.hideandseek.vaxvision.common.lib.ErrorResponse;
 import in.hideandseek.vaxvision.screens.downloadcert.manager.CertificateServiceManager;
 import in.hideandseek.vaxvision.screens.downloadcert.view.ICertificateView;
+import okhttp3.ResponseBody;
 
 public class CertPresenterImpl implements ICertPresenter, ICertificateResReceiver {
 
@@ -32,7 +33,7 @@ public class CertPresenterImpl implements ICertPresenter, ICertificateResReceive
     }
 
     @Override
-    public void onSuccessCertificate(String pdfBinary) {
+    public void onSuccessCertificate(ResponseBody pdfBinary) {
         if (mView != null) {
             mView.hideProgress();
             mView.onCertDownloadSuccess(pdfBinary);

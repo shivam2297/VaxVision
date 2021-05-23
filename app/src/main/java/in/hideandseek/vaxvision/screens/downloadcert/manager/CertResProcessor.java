@@ -3,8 +3,9 @@ package in.hideandseek.vaxvision.screens.downloadcert.manager;
 import in.hideandseek.vaxvision.common.lib.ErrorResponse;
 import in.hideandseek.vaxvision.common.lib.ResponseCallback;
 import in.hideandseek.vaxvision.screens.downloadcert.presenter.ICertificateResReceiver;
+import okhttp3.ResponseBody;
 
-public class CertResProcessor implements ResponseCallback<String> {
+public class CertResProcessor implements ResponseCallback<ResponseBody> {
     private ICertificateResReceiver resReceiver;
 
     public CertResProcessor(ICertificateResReceiver resReceiver) {
@@ -12,7 +13,7 @@ public class CertResProcessor implements ResponseCallback<String> {
     }
 
     @Override
-    public void onSuccess(String data) {
+    public void onSuccess(ResponseBody data) {
         resReceiver.onSuccessCertificate(data);
     }
 
