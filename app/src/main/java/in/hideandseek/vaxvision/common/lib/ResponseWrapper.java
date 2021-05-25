@@ -19,15 +19,19 @@ public class ResponseWrapper<T> implements Callback<T> {
         if (response.isSuccessful()) {
             if (response != null) {
                 try {
-                    ResponseModel responseModel = (ResponseModel) response.body();
-                    if (responseModel.getCode().equals(ErrorCode.STATUS_OK.getErrorCodeValue()) || responseModel.getCode().equals(ErrorCode.DEFAULT.getErrorCodeValue()))
-                        mResponseCallback.onSuccess(response.body());
+                    ErrorModel errorModel = (ErrorModel) response.body();
+                    if (errorModel != null)
+                        mResponseCallback.onFailure(new ErrorResponse(mErrorMessageResolver.resolve(errorModel.getErrorCode())));
                     else
-                        mResponseCallback.onFailure(new ErrorResponse(mErrorMessageResolver.resolve(responseModel.getCode())));
+                        mResponseCallback.onSuccess((T) response.body());
                 } catch (Exception e) {
-                    ErrorResponse error = new ErrorResponse(R.string.some_error_occured);
-                    error.setErrorExp(e);
-                    mResponseCallback.onFailure(error);
+//                    ErrorResponse error = new ErrorResponse(R.string.some_error_occured);
+//                    error.setErrorExp(e);
+//                    mResponseCallback.onFailure(error);
+
+//                    if exception in converting to error model
+//                    then convert to success model
+                    mResponseCallback.onSuccess((T) response.body());
                 }
             } else {
                 mResponseCallback.onFailure(new ErrorResponse(R.string.some_error_occured));
