@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fee_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@color/textview_grey"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_normal"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="₹1250" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_xlarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/fee_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="JP Hospital" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/addr_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:textSize="@dimen/text_xlarge"
+                app:layout_constraintLeft_toLeftOf="@id/name_tv"
+                app:layout_constraintRight_toRightOf="@id/name_tv"
+                app:layout_constraintTop_toBottomOf="@id/name_tv"
+                tools:text="MG Road, Sec 14, Gurgaon" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_map"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="@id/addr_tv"
+                app:layout_constraintRight_toRightOf="@id/addr_tv"
+                app:layout_constraintTop_toBottomOf="@id/addr_tv">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    app:srcCompat="@drawable/ic_baseline_location_on_24"
+                    android:layout_gravity="center_vertical"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="@color/textview_grey"
+                    android:layout_gravity="center_vertical"
+                    android:text="Locate on maps >" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_dates_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_map">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
