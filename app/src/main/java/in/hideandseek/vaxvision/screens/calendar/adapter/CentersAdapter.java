@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +26,12 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
 
     private ArrayList<CenterViewModel> mCenters;
     private Context mContext;
+    private onItemClickListener mItemClickListner;
 
-    public CentersAdapter(ArrayList<CenterViewModel> mCenters, Context mContext) {
+    public CentersAdapter(ArrayList<CenterViewModel> mCenters, Context mContext, onItemClickListener mItemClickListner) {
         this.mCenters = mCenters;
         this.mContext = mContext;
+        this.mItemClickListner = mItemClickListner;
     }
 
     @NonNull
@@ -45,6 +48,13 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
     @Override
     public void onBindViewHolder(@NonNull CentersViewHolder holder, int position) {
         holder.bindView(mCenters.get(position));
+
+        holder.mLocateOMapll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mItemClickListner.onClickedLocateMap(position);
+            }
+        });
     }
 
     @Override
@@ -83,6 +93,9 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
 
         @BindView(R.id.rv_date_7)
         RecyclerView rvDate7;
+
+        @BindView(R.id.ll_map)
+        LinearLayoutCompat mLocateOMapll;
 
         private SlotsAdapter mAdapter1;
         private SlotsAdapter mAdapter2;
@@ -151,6 +164,10 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
             mAdapter6.notifyDataSetChanged();
             mAdapter7.notifyDataSetChanged();
         }
+    }
+
+    public interface onItemClickListener {
+        void onClickedLocateMap(int position);
     }
 
 }

@@ -31,7 +31,7 @@ import in.hideandseek.vaxvision.screens.calendar.viewmodel.CenterViewModel;
 import in.hideandseek.vaxvision.screens.calendar.viewmodel.Filter;
 import in.hideandseek.vaxvision.screens.sessions.view.SessionsActivity;
 
-public class CalendarActivity extends BaseActivity implements ICalendarView {
+public class CalendarActivity extends BaseActivity implements ICalendarView, CentersAdapter.onItemClickListener {
 
     @BindView(R.id.filter_age_18)
     Chip mFilterAge18;
@@ -83,6 +83,7 @@ public class CalendarActivity extends BaseActivity implements ICalendarView {
     private CentersAdapter mCentersAdapter;
 
     private ICalendarPresenter mPresenter;
+    private CalenderViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +91,7 @@ public class CalendarActivity extends BaseActivity implements ICalendarView {
         setContentView(R.layout.activity_calendar);
         ButterKnife.bind(this);
         setupFilterListeners();
-        mCentersAdapter = new CentersAdapter(mCenters, this);
+        mCentersAdapter = new CentersAdapter(mCenters, this, this);
         mCalenderRv.setLayoutManager(new LinearLayoutManager(this));
         mCalenderRv.setAdapter(mCentersAdapter);
 
@@ -122,6 +123,7 @@ public class CalendarActivity extends BaseActivity implements ICalendarView {
 
     @Override
     public void onSuccessCalendar(CalenderViewModel viewModel) {
+        mViewModel = viewModel;
         SimpleDateFormat originalDateformat = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE\ndd MMM");
         try {
@@ -219,5 +221,29 @@ public class CalendarActivity extends BaseActivity implements ICalendarView {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+
+    @Override
+    public void onClickedLocateMap(int position) {
+        String locationAndAddress = mViewModel.centers.get(position)
+                .name
+                + ", "
+                + mViewModel.centers.get(position)
+                .address;
+        String latLongQuery = "geo:"
+                + mViewModel.centers.get(position).lat.toString()
+                + ","
+                + mViewModel.centers.get(position)._long.toString()
+                + "?z=10&"
+                + "q="
+                + Uri.encode(locationAndAddress);
+        Uri gmmIntentUri = Uri.parse(latLongQuery);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+//        if (mapIntent.resolveActivity(getPackageManager()) != null)
+//            startActivity(mapIntent);
+//        else
+//            showSnackBar(R.string.install_maps_msg);
     }
 }
