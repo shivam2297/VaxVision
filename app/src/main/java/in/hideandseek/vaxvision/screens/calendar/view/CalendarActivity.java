@@ -1,5 +1,7 @@
 package in.hideandseek.vaxvision.screens.calendar.view;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import in.hideandseek.vaxvision.R;
 import in.hideandseek.vaxvision.common.BaseActivity;
 import in.hideandseek.vaxvision.common.lib.ErrorResponse;
@@ -208,5 +211,13 @@ public class CalendarActivity extends BaseActivity implements ICalendarView {
                 mPresenter.getFilteredCalendar(mFilter);
             }
         });
+    }
+
+    @OnClick(R.id.fl_register_cowin)
+    void registerBtnTapped() {
+        String url = "https://www.cowin.gov.in/";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }
