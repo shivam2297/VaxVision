@@ -129,6 +129,7 @@ public class CalenderPresenterImpl implements ICalendarPresenter, ICalendarByDis
                         center.getVaccineFees());
 
                 // iterate over original centers to filter and generate the viewmodel
+                boolean skipCenter = true;
                 for (int i = 0; i < mDates.size(); i++) {
                     String dateString = mDates.get(i);
                     Date date;
@@ -159,10 +160,16 @@ public class CalenderPresenterImpl implements ICalendarPresenter, ICalendarByDis
                         // if filters and dates match add session to list
                         sessions.add(originalSession);
                     }
+                    // if there is any one session available
+                    // on any one date then show that center
+                    if (sessions.size() > 0)
+                        skipCenter = false;
                 }
 
+
                 // add centerviewmodel to the list
-                viewModel.centers.add(centerViewModel);
+                if (!skipCenter)
+                    viewModel.centers.add(centerViewModel);
             }
         }
 
