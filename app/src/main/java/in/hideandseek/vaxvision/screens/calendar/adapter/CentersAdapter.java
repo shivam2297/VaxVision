@@ -104,13 +104,6 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
         public CentersViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            mAdapter1 = new SlotsAdapter(mSessionDate1);
-            mAdapter2 = new SlotsAdapter(mSessionDate2);
-            mAdapter3 = new SlotsAdapter(mSessionDate3);
-            mAdapter4 = new SlotsAdapter(mSessionDate4);
-            mAdapter5 = new SlotsAdapter(mSessionDate5);
-            mAdapter6 = new SlotsAdapter(mSessionDate6);
-            mAdapter7 = new SlotsAdapter(mSessionDate7);
 
             rvDate1.setLayoutManager(new LinearLayoutManager(context));
             rvDate2.setLayoutManager(new LinearLayoutManager(context));
@@ -119,20 +112,12 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
             rvDate5.setLayoutManager(new LinearLayoutManager(context));
             rvDate6.setLayoutManager(new LinearLayoutManager(context));
             rvDate7.setLayoutManager(new LinearLayoutManager(context));
-
-            rvDate1.setAdapter(mAdapter1);
-            rvDate2.setAdapter(mAdapter2);
-            rvDate3.setAdapter(mAdapter3);
-            rvDate4.setAdapter(mAdapter4);
-            rvDate5.setAdapter(mAdapter5);
-            rvDate6.setAdapter(mAdapter6);
-            rvDate7.setAdapter(mAdapter7);
         }
 
         public void bindView(CenterViewModel center) {
             nameTv.setText(center.name);
             addrTv.setText(center.address);
-            feeTv.setText(Filter.FEE_FILTER_FREE.equals(center.feeType) ? "FREE" : center.vaccineFees.get(0).getFee() + "+");
+            feeTv.setText(Filter.FEE_FILTER_FREE.equals(center.feeType) ? "FREE" : "₹" +center.vaccineFees.get(0).getFee() + "+");
 
             mSessionDate1 = (ArrayList<Session>) center.sessions.get(0);
             mSessionDate2 = (ArrayList<Session>) center.sessions.get(1);
@@ -141,6 +126,22 @@ public class CentersAdapter extends RecyclerView.Adapter<CentersAdapter.CentersV
             mSessionDate5 = (ArrayList<Session>) center.sessions.get(4);
             mSessionDate6 = (ArrayList<Session>) center.sessions.get(5);
             mSessionDate7 = (ArrayList<Session>) center.sessions.get(6);
+
+            mAdapter1 = new SlotsAdapter(mSessionDate1, mContext);
+            mAdapter2 = new SlotsAdapter(mSessionDate2, mContext);
+            mAdapter3 = new SlotsAdapter(mSessionDate3, mContext);
+            mAdapter4 = new SlotsAdapter(mSessionDate4, mContext);
+            mAdapter5 = new SlotsAdapter(mSessionDate5, mContext);
+            mAdapter6 = new SlotsAdapter(mSessionDate6, mContext);
+            mAdapter7 = new SlotsAdapter(mSessionDate7, mContext);
+
+            rvDate1.setAdapter(mAdapter1);
+            rvDate2.setAdapter(mAdapter2);
+            rvDate3.setAdapter(mAdapter3);
+            rvDate4.setAdapter(mAdapter4);
+            rvDate5.setAdapter(mAdapter5);
+            rvDate6.setAdapter(mAdapter6);
+            rvDate7.setAdapter(mAdapter7);
 
             mAdapter1.notifyDataSetChanged();
             mAdapter2.notifyDataSetChanged();

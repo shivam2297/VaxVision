@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -14,14 +16,17 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.hideandseek.vaxvision.R;
+import in.hideandseek.vaxvision.VaxVisionApp;
 import in.hideandseek.vaxvision.common.libapi.calendar.model.Session;
 
 public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotViewHolder> {
 
     private ArrayList<Session> mSessions;
+    private Context mContext;
 
-    public SlotsAdapter(ArrayList<Session> mSessions) {
+    public SlotsAdapter(ArrayList<Session> mSessions, Context mContext) {
         this.mSessions = mSessions;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -31,7 +36,7 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotViewHold
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         View view = layoutInflater.inflate(R.layout.item_calendar_slot, parent, false);
-        SlotViewHolder viewHolder = new SlotViewHolder(view);
+        SlotViewHolder viewHolder = new SlotViewHolder(view, mContext);
         return viewHolder;
     }
 
@@ -59,16 +64,34 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotViewHold
         @BindView(R.id.tv_min_age)
         AppCompatTextView ageTv;
 
-        public SlotViewHolder(@NonNull View itemView) {
+        @BindView(R.id.ll_slot_parent)
+        LinearLayoutCompat mParentView;
+
+        @BindView(R.id.ll_dose_lbl)
+        LinearLayoutCompat mDoseLblParent;
+
+        @BindView(R.id.ll_dose_count)
+        LinearLayoutCompat mDoseCountParent;
+
+        private Context mContext;
+
+        public SlotViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.mContext = context;
         }
 
         public void bindView(Session session) {
             dose1Tv.setText(session.getAvailableCapacityDose1().toString());
             dose2Tv.setText(session.getAvailableCapacityDose2().toString());
             vaccineNameTv.setText(session.getVaccine());
-            ageTv.setText(session.getMinAgeLimit()+"+");
+            ageTv.setText(session.getMinAgeLimit() + "+");
+
+            int bgColor = session.getAvailableCapacity() > 10 ? R.color.green :
+                    session.getAvailableCapacity() > 5 ? R.color.yellow : R.color.red;
+
+            mDoseLblParent.setBackgroundColor(ContextCompat.getColor(mContext, bgColor));
+            mDoseCountParent.setBackgroundColor(ContextCompat.getColor(mContext, bgColor));
         }
     }
 }
