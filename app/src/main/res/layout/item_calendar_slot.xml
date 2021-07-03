@@ -8,69 +8,76 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/ll_dose_lbl"
+        android:id="@+id/ll_capacity_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        tools:background="@color/green">
+        android:orientation="vertical"
+        tools:background="@drawable/bg_corner_green">
 
-        <TextView
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_dose_lbl"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:text="D1"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_small" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="D1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="D2"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_dose_count"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:text="D2"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_small" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_dose1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small"
+
+                tools:text="0" />
+
+            <TextView
+                android:id="@+id/tv_dose2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small"
+                tools:text="0" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/ll_dose_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        tools:background="@color/green">
-
-        <TextView
-            android:id="@+id/tv_dose1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_small"
-
-            tools:text="0" />
-
-        <TextView
-            android:id="@+id/tv_dose2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_small"
-            tools:text="0" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_vaccine"

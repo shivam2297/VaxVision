@@ -73,6 +73,9 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotViewHold
         @BindView(R.id.ll_dose_count)
         LinearLayoutCompat mDoseCountParent;
 
+        @BindView(R.id.ll_capacity_parent)
+        LinearLayoutCompat mCapacityParent;
+
         private Context mContext;
 
         public SlotViewHolder(@NonNull View itemView, Context context) {
@@ -87,11 +90,13 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.SlotViewHold
             vaccineNameTv.setText(session.getVaccine());
             ageTv.setText(session.getMinAgeLimit() + "+");
 
-            int bgColor = session.getAvailableCapacity() > 10 ? R.color.green :
-                    session.getAvailableCapacity() > 5 ? R.color.yellow : R.color.red;
+            int bgColor = session.getAvailableCapacity() > 10 ? R.drawable.bg_corner_green :
+                    session.getAvailableCapacity() > 5 ? R.drawable.bg_corner_yellow : R.drawable.bg_corner_red;
 
-            mDoseLblParent.setBackgroundColor(ContextCompat.getColor(mContext, bgColor));
-            mDoseCountParent.setBackgroundColor(ContextCompat.getColor(mContext, bgColor));
+//            mDoseLblParent.setBackgroundColor(ContextCompat.getColor(mContext, bgColor));
+//            mDoseCountParent.setBackgroundColor(ContextCompat.getColor(mContext, bgColor));
+
+            mCapacityParent.setBackground(ContextCompat.getDrawable(mContext, bgColor));
         }
     }
 }
