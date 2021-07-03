@@ -32,6 +32,7 @@ import in.hideandseek.vaxvision.common.libapi.statedistrict.model.District;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.model.State;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.request.GetDistrictsApiRequest;
 import in.hideandseek.vaxvision.common.libapi.statedistrict.request.GetStatesApiRequest;
+import in.hideandseek.vaxvision.screens.calendar.view.CalendarActivity;
 import in.hideandseek.vaxvision.screens.sessions.view.SessionsActivity;
 import in.hideandseek.vaxvision.screens.stateinfo.manager.StateDistrictServiceManager;
 import in.hideandseek.vaxvision.screens.stateinfo.presenter.ISelectStatePresenter;
@@ -114,7 +115,7 @@ public class SelectStateActivity extends BaseActivity implements ISelectStateVie
     @OnClick(R.id.btn_submit_state)
     void submitStateInfoTapped() {
         if (isDataValid()) {
-            Intent intent = new Intent(this, SessionsActivity.class);
+            Intent intent = new Intent(this, CalendarActivity.class);
             intent.putExtra(SessionsActivity.KEY_DISTRICT_ID, mSelectedDistrict.getDistrictId());
             intent.putExtra(SessionsActivity.KEY_DATE, mSelectedDate);
             launchActivity(intent);

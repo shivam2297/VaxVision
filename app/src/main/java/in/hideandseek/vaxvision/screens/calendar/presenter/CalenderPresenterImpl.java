@@ -110,8 +110,11 @@ public class CalenderPresenterImpl implements ICalendarPresenter, ICalendarByDis
             for (Center center :
                     mOriginalCenters) {
                 // check fee type filter
-                if (!"".equals(filter.feeType) && !filter.feeType.toLowerCase().equals(center.getFeeType().toLowerCase()))
-                    continue;
+                if ((filter.filterFeePaid && !filter.filterFeeFree) || (filter.filterFeeFree && !filter.filterFeePaid)) {
+                    if ((filter.filterFeeFree && !Filter.FEE_FILTER_FREE.equals(center.getFeeType())) || (filter.filterFeePaid && !Filter.FEE_FILTER_PAID.equals(center.getFeeType()))) {
+                        continue;
+                    }
+                }
                 CenterViewModel centerViewModel = new CenterViewModel(
                         center.getName(),
                         center.getAddress(),
@@ -140,10 +143,17 @@ public class CalenderPresenterImpl implements ICalendarPresenter, ICalendarByDis
                         // check for filters and dates
                         if (!dateString.equals(originalSession.getDate()))
                             continue;
-                        if (!(filter.age == 0) && !(filter.age == originalSession.getMinAgeLimit()))
+
+                        if ((filter.filterAge45 && !filter.filterAge18) || (filter.filterAge18 && !filter.filterAge45)) {
+                            if ((filter.filterAge18 && Filter.AGE_FILTER_18 != originalSession.getMinAgeLimit()) ||
+                                    (filter.filterAge45 && Filter.AGE_FILTER_45 != originalSession.getMinAgeLimit())) {
+                                continue;
+                            }
+                        }
+
+                        if (filter.filterVaccine.size() > 0 && !filter.filterVaccine.contains(originalSession.getVaccine())) {
                             continue;
-                        if (!"".equals(filter.vaccine) && !filter.vaccine.toLowerCase().equals(originalSession.getVaccine().toLowerCase()))
-                            continue;
+                        }
 
                         // if filters and dates match add session to list
                         sessions.add(originalSession);
