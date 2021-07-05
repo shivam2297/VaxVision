@@ -13,7 +13,10 @@
     <color name="cream">#F8D6B4</color>
     <color name="btn_blue">#007AFF</color>
 
-    <color name="yellow">#FEDD29</color>
+    <color name="yellow">#897501</color>
     <color name="red">#D93130</color>
+    <color name="dark_green">#5E7D17</color>
+    <color name="textview_grey_fg">#636363</color>
+    <color name="textview_grey_light">#E2E4E4</color>
 
 </resources>

@@ -6,15 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".screens.calendar.view.CalendarActivity">
 
+    <FrameLayout
+        android:id="@+id/fl_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/textview_grey_light">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/textview_grey_fg"
+            android:layout_margin="@dimen/margin_xlarge"
+            android:drawableLeft="@drawable/ic_outline_info_24"
+            android:drawablePadding="@dimen/margin_4dp"
+            android:text="@string/calendar_note"/>
+
+    </FrameLayout>
+
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filter_chip_group"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_xlarge"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginRight="@dimen/margin_xlarge"
         app:chipSpacingHorizontal="@dimen/margin_xlarge"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/fl_note">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/filter_age_18"
@@ -190,7 +213,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_4dp"
-        android:layout_marginBottom="@dimen/margin_4dp"
+        android:layout_marginBottom="@dimen/margin_small"
         app:layout_constraintBottom_toTopOf="@id/fl_register_cowin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

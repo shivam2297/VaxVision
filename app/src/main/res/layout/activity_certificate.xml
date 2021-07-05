@@ -59,4 +59,26 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <FrameLayout
+        android:id="@+id/fl_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/textview_grey_light">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/textview_grey_fg"
+            android:layout_margin="@dimen/margin_xlarge"
+            android:drawableLeft="@drawable/ic_outline_info_24"
+            android:drawablePadding="@dimen/margin_4dp"
+            android:text="@string/certificate_note"/>
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

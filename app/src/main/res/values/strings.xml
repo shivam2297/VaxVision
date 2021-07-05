@@ -10,4 +10,6 @@
     <string name="privacy_ref_id">We respect your privacy and safety. We do not save or share any sensitive information of user.</string>
     <string name="download_vaccine_certificate">Download Vaccine Certificate</string>
     <string name="install_maps_msg">Please install google maps</string>
+    <string name="calendar_note">- All data is fetched from <b>CoWin portal</b>.\n- D1, D2 represents available capacity for dose 1 and dose 2 respectively.\n- <b>Walk-in available</b> at all vaccination centers for age 18 years and above.</string>
+    <string name="certificate_note">We do not store any user data. The certificate will be downloaded from <b>CoWin portal</b> in pdf form.</string>
 </resources>
