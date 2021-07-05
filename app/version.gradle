@@ -1,0 +1,49 @@
+/**
+ * Bump and return the  versionCode in version-code.properties file.
+ * Creates file with code 1000 if missing.
+ */
+def bumpVersionCode() {
+    // properties file
+    File propsFile = project.file('version-code.properties');
+
+    // properties
+    Properties props = new Properties();
+
+    // load file if any
+    if (propsFile.exists()) {
+        logger.info('Found version code file: ' + propsFile.path);
+        props.load(propsFile.newReader());
+    }
+
+    // version code
+    int versionCode = 999;
+
+    // read version code from file, if possible
+    String val = props.getProperty('versionCode');
+    if (val != null && val.isInteger()) {
+        versionCode = val.toInteger();
+        logger.info('Read version code from file: ' + versionCode);
+    }
+
+    // increment version code
+    versionCode++;
+    logger.info('Bumped version code is: ' + versionCode);
+
+    // save in properties
+    props.clear();
+    props.setProperty('versionCode', versionCode.toString());
+
+    // write back to file
+    props.store(propsFile.newWriter(false), 'Auto generated/updated file. Do not Edit.');
+    logger.info('Updated version code file');
+
+    // return version code
+    return versionCode;
+}
+
+// bump version code
+def int bumpedVersionCode = bumpVersionCode();
+
+// apply it to android config
+android.defaultConfig.versionCode = bumpedVersionCode;
+//android.defaultConfig.versionName = 'v' + (int) Math.round(bumpedVersionCode / 1000);
